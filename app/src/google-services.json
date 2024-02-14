@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "899246879267",
+    "project_id": "foodatuh",
+    "storage_bucket": "foodatuh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:899246879267:android:9c7d9cb4a676c19a863796",
+        "android_client_info": {
+          "package_name": "com.mahmoud.myfoodplaner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "899246879267-4pd3p2ug0k0r82q080pkf94e2uo4dvd6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrL4ZESpWZYL0LX1epE4SRlIyTFMgKJmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "899246879267-4pd3p2ug0k0r82q080pkf94e2uo4dvd6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

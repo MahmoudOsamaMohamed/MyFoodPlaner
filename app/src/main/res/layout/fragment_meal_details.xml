@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".details.MealDetailsFragment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/meal_img"
+        android:src="@drawable/default_meal"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="16dp"
+        />
+        <TextView
+            android:id="@+id/meal_name"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="Meal Name"
+            android:gravity="center"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-black"
+            android:layout_marginBottom="16dp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:text="@string/category_name"
+                android:textColor="@color/primary"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+
+                android:fontFamily="sans-serif-black"
+                />
+            <TextView
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/meal_category"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:text="Beef"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:weightSum="4"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/area_name"
+                android:textColor="@color/primary"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+
+                android:fontFamily="sans-serif-black"
+                />
+            <TextView
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/meal_area"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:text="Beef"
+                android:gravity="center"
+                android:layout_marginStart="16dp"
+                />
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/meal_description"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/primary"
+            android:layout_marginBottom="16dp"
+
+            />
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:enableAutomaticInitialization="false"
+        android:layout_marginBottom="16dp"
+
+         />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/ingredients"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-black"
+
+            android:layout_marginBottom="16dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ingredinets_recycler_view"
+            android:layout_marginBottom="16dp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/steps"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-black"
+            android:id="@+id/steps_tv"
+            android:layout_marginBottom="16dp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/steps_recycler_view"
+            android:layout_marginBottom="16dp"
+            />
+    </LinearLayout>
+</ScrollView>
+</FrameLayout>
