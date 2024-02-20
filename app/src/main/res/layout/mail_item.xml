@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="250dp"
+    android:id="@+id/cardView"
+    android:layout_width="200dp"
+    android:layout_height="150dp"
     app:cardCornerRadius="15dp"
-    android:layout_height="150dp">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true">
 
-    android:weightSum="5"
-    android:orientation="vertical">
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/meal_img"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:scaleType="fitXY"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        app:srcCompat="@drawable/default_meal" />
-    <TextView
+        <!-- Meal Image -->
+        <ImageView
+            android:id="@+id/meal_img"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_meal" />
 
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="6dp"
-        android:textSize="20sp"
-        android:layout_weight="2"
-        android:id="@+id/meal_name"
-        android:text="pla pla pla"
+        <!-- Meal Name -->
+        <TextView
+            android:id="@+id/meal_name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_weight="2"
+            android:text="Delicious Dish"
+            android:textStyle="bold" />
 
-        />
-</LinearLayout>
+    </LinearLayout>
+
+
+
 </androidx.cardview.widget.CardView>

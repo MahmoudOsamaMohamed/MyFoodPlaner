@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">مخطط الوجبات</string>
+    <string name="hello_blank_fragment">مرحبًا بك في الشاشة الفارغة</string>
+    <string name="with_google">المتابعة باستخدام جوجل</string>
+    <string name="guest">المتابعة كضيف</string>
+    <string name="add">إضافة</string>
+    <string name="meal_of_the_day">وجبة اليوم</string>
+    <string name="categories">فئات الطعام</string>
+    <string name="category_name">الفئة</string>
+    <string name="area_name">الدولة</string>
+    <string name="steps">الخطوات</string>
+    <string name="ingredients">المكونات</string>
+    <string name="filter">البحث حسب</string>
+    <string name="name">الاسم</string>
+    <string name="favourte">المفضلة</string>
+    <string name="add_to_plan">إضافة إلى الخطة</string>
+    <string name="day_selection">اختر يومًا</string>
+    <string name="Saturday">السبت</string>
+    <string name="Sunday">الأحد</string>
+    <string name="Monday">الاثنين</string>
+    <string name="Tuesday">الثلاثاء</string>
+    <string name="Wednesday">الأربعاء</string>
+    <string name="Thursday">الخميس</string>
+    <string name="Friday">الجمعة</string>
+    <string-array name="days_of_week">
+        <item>السبت</item>
+        <item>الأحد</item>
+        <item>الاثنين</item>
+        <item>الثلاثاء</item>
+        <item>الأربعاء</item>
+        <item>الخميس</item>
+        <item>الجمعة</item>
+    </string-array>
+</resources>

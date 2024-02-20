@@ -1,9 +1,24 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.MyFoodPlaner" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.MyFoodPlaner" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorSecondary">@color/secondery</item>
     </style>
 
     <style name="Theme.MyFoodPlaner" parent="Base.Theme.MyFoodPlaner" />
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+    <style name="MyAutoCompleteTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_weight">5</item>
+        <item name="android:completionThreshold">1</item>
+
+    </style>
+
 </resources>

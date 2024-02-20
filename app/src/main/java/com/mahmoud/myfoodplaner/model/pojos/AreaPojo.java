@@ -1,6 +1,6 @@
 package com.mahmoud.myfoodplaner.model.pojos;
 
-public class Area {
+public class AreaPojo {
 
     private String strArea;
 

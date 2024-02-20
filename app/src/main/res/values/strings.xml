@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyFoodPlaner</string>
+    <string name="app_name">Meals Planer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="with_google">Continue with google</string>
@@ -11,4 +11,26 @@
     <string name="area_name">Country</string>
     <string name="steps">Steps</string>
     <string name="ingredients">Ingredients</string>
+    <string name="filter">Search by</string>
+    <string name="name">Name</string>
+    <string name="favourte">Favourite</string>
+    <string name="add_to_plan">Add To Plan</string>
+    <string name="day_selection">Choose a day</string>
+    <string name="Saturday">Saturday</string>
+    <string name="Sunday">Sunday</string>
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+    <string-array name="days_of_week">
+        <item>Saturday</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+
+    </string-array>
 </resources>

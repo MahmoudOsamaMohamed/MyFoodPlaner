@@ -1,38 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-android:orientation="vertical"
-    android:layout_height="50dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
     <LinearLayout
         android:orientation="horizontal"
         android:weightSum="5"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/ingredientName"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:textSize="20sp"
-        android:textColor="@color/primary"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_vertical"
-        android:text="Ingredient Name" />
-<TextView
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_marginStart="16dp"
-    android:textSize="20sp"
-    android:textColor="@color/primary"
-    android:fontFamily="sans-serif-black"
-    android:text="1 cup "
-    android:id="@+id/messure"
-    android:gravity="center_vertical"
-    android:layout_height="match_parent"/>
-        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ingredientName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_vertical"
+            android:text="Ingredient Name" />
+
+        <TextView
+            android:id="@+id/messure"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:textSize="18sp"
+            android:textColor="@color/primary"
+            android:fontFamily="sans-serif-black"
+            android:text="1 cup"
+            android:gravity="center_vertical"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        />
+        android:layout_height="wrap_content"/>
 </LinearLayout>

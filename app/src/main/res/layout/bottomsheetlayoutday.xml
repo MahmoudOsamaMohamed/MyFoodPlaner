@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+    <TextView
+        android:id="@+id/saterday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/day_selection"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/layout_saterday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Saturday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_sunday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Sunday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_monday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Monday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_thuesday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Tuesday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_wednesday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Wednesday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_thursday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Thursday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_friday"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:text="@string/Friday"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -7,7 +7,7 @@
     android:background="@drawable/backgroound"
 
     android:layout_height="match_parent"
-    tools:context=".login.SignFragment">
+    >
 
     <Button
         android:id="@+id/google_btn"

@@ -13,4 +13,5 @@ public interface MealsRemoteDataSource {
     void getRandomMeal(LongMealsCallback callback);
     void getAllAreas(AreasCallback callback);
     void getAllIngredients(IngredientsCallback callback);
+    void getDetailedCategories(DetailedCategoriesCallback callback);
 }

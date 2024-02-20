@@ -3,18 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/signFragment"
         android:name="com.mahmoud.myfoodplaner.login.SignFragment"
         android:label="fragment_sign"
-        tools:layout="@layout/fragment_sign" />
+        tools:layout="@layout/fragment_sign" >
+        <action
+            android:id="@+id/action_signFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/planFragment"
-        android:name="com.mahmoud.myfoodplaner.PlanFragment"
+        android:name="com.mahmoud.myfoodplaner.plan.PlanFragment"
         android:label="fragment_plan"
-        tools:layout="@layout/fragment_plan" />
+        tools:layout="@layout/fragment_plan" >
+        <action
+            android:id="@+id/action_planFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
+        <action
+            android:id="@+id/action_planFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+        <action
+            android:id="@+id/action_planFragment_self"
+            app:destination="@id/planFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.mahmoud.myfoodplaner.home.HomeFragment"
@@ -22,7 +38,13 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_mealDetailsFragment"
-            app:destination="@id/mealDetailsFragment" />
+            app:destination="@id/mealDetailsFragment"
+            app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_signFragment"
+            app:destination="@id/signFragment"
+            app:popUpTo="@id/signFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/mealDetailsFragment"
@@ -32,5 +54,45 @@
         <argument
             android:name="mealId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_mealDetailsFragment_to_planFragment"
+            app:destination="@id/planFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.mahmoud.myfoodplaner.explore.ExploreFragment"
+        android:label="ExploreFragment" >
+        <action
+            android:id="@+id/action_exploreFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favourateFragment"
+        android:name="com.mahmoud.myfoodplaner.favourate.FavourateFragment"
+        android:label="fragment_favourate"
+        tools:layout="@layout/fragment_favourate" >
+        <action
+            android:id="@+id/action_favourateFragment_to_mealDetailsFragment"
+            app:destination="@id/mealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.mahmoud.myfoodplaner.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_signFragment"
+            app:destination="@id/signFragment"
+            app:popUpTo="@id/signFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.mahmoud.myfoodplaner.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_signFragment"
+            app:destination="@id/signFragment" />
     </fragment>
 </navigation>

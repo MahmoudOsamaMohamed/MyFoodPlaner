@@ -1,5 +1,6 @@
 package com.mahmoud.myfoodplaner.home;
 
+import com.mahmoud.myfoodplaner.model.pojos.AreaPojo;
 import com.mahmoud.myfoodplaner.model.pojos.LongMeal;
 import com.mahmoud.myfoodplaner.model.pojos.ShortMeal;
 import com.mahmoud.myfoodplaner.model.pojos.SimpleCategory;
@@ -14,5 +15,6 @@ public interface HomeView {
     void showCategoriesError(String error);
     void updateCategoryBrowse(List<ShortMeal>shortMealsList);
     void showShortMealsError(String error);
-    
+
+    void setAreas(List<AreaPojo> areaPojos);
 }
