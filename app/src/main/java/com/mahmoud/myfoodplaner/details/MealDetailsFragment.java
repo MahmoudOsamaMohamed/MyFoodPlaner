@@ -169,6 +169,7 @@ public class MealDetailsFragment extends Fragment implements DetailsView, DaySel
         favorite_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (getActivity().getSharedPreferences("user", MODE_PRIVATE).getString("email", null) != null){
                 if(longMealGlobal!=null){
                 Favourate favourat = new Favourate();
                 favourat.img_url = longMealGlobal.getStrMealThumb();
@@ -198,6 +199,10 @@ Snackbar.make(view, "Error " + t.getMessage(), Snackbar.LENGTH_LONG).show();
                             }
                         });
             }}
+            else{
+                    Toast.makeText(getActivity(), "Please login first", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
 
     }

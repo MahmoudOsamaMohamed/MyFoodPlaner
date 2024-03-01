@@ -15,9 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
@@ -39,6 +43,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 
 public class HomeFragment extends Fragment implements HomeView,MealClickListener {
+    LottieAnimationView animationViewLoading;
+    LinearLayout animationViewNoInternet;
+    ImageButton refresh;
+    ScrollView scrollView;
     ImageView meal_img;
     SharedPreferences sharedPreferences;
     boolean isArea=false;
@@ -101,13 +109,19 @@ MainActivity.showBottomNav();
         recyclerViewArea = view.findViewById(R.id.recyclerViewArea);
         meal_name = view.findViewById(R.id.meal_name);
         cardView = view.findViewById(R.id.meal_card);
+        animationViewLoading = view.findViewById(R.id.loading);
+        animationViewNoInternet = view.findViewById(R.id.noInternet);
+        scrollView = view.findViewById(R.id.home_view);
+        refresh=view.findViewById(R.id.refreshButton);
         cardView.setOnClickListener(v -> {
             NavHostFragment.findNavController(HomeFragment.this).navigate(HomeFragmentDirections.actionHomeFragmentToMealDetailsFragment(randomMealId));
 
         });
         sharedPreferences = getActivity().getSharedPreferences("day", 0);
 
-
+refresh.setOnClickListener(v->{
+    NavHostFragment.findNavController(HomeFragment.this).navigate(R.id.action_homeFragment_self);
+});
 
         if(!sharedPreferences.contains("lastRefreshDate")){
             long lastRefreshDate=sharedPreferences.getLong("lastRefreshDate",-1);
@@ -182,8 +196,9 @@ MainActivity.showBottomNav();
 
     @Override
     public void showCategoriesError(String error) {
-        Log.i("categories", error);
-    }
+        scrollView.setVisibility(View.GONE);
+        animationViewLoading.setVisibility(View.GONE);
+        animationViewNoInternet.setVisibility(View.VISIBLE);    }
 
     @Override
     public void updateCategoryBrowse(List<ShortMeal> shortMealsList) {
@@ -222,6 +237,8 @@ MainActivity.showBottomNav();
                    mListArea.add(new DataModel(this.shortMealsList.get(i), areasList.get(i).getStrArea()));
                }
                adapterArea.notifyDataSetChanged();
+               scrollView.setVisibility(View.VISIBLE);
+               animationViewLoading.setVisibility(View.GONE);
                isArea=false;
                this.shortMealsList.clear();
 
@@ -233,7 +250,9 @@ MainActivity.showBottomNav();
 
     @Override
     public void showShortMealsError(String error) {
-        Log.i("short meal", error);
+        scrollView.setVisibility(View.GONE);
+        animationViewLoading.setVisibility(View.GONE);
+        animationViewNoInternet.setVisibility(View.VISIBLE);
     }
 
     @Override
