@@ -14,16 +14,16 @@
     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 
     android:id="@+id/rc" />
-    <TextView
+    <com.airbnb.lottie.LottieAnimationView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:gravity="center"
-        android:textColor="@color/primary"
-        android:visibility="gone"
-        android:id="@+id/show"
 
-        android:text="no favourite items chosen"/>
+        android:id="@+id/empty"
+
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="empty.json"
+        app:lottie_loop="true" />
 
 
 </FrameLayout>

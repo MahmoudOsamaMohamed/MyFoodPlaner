@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+import com.mahmoud.myfoodplaner.MainActivity;
 import com.mahmoud.myfoodplaner.R;
 
 import java.util.ArrayList;
@@ -53,6 +55,8 @@ public class AreaAdpater extends ArrayAdapter<AreaModel> {
 
         if (areModel != null) {
             textViewName.setText(areModel.getName());
+            Glide.with(getContext()).load("https://flagcdn.com/56x42/"+
+                    MainActivity.countryCodes.get(areModel.getName()).toLowerCase() +".png").into(imageViewFlag);
 
         }
         layout.setOnClickListener(new View.OnClickListener() {

@@ -53,7 +53,7 @@ public class MealsRemoteDataSourceImpl implements MealsRemoteDataSource {
     }
 
     @Override
-    public void getAllMealsByCategory(String category, ShortMealsCallback callback) {
+    public  void  getAllMealsByCategory(String category, ShortMealsCallback callback) {
         foodApi = retrofit.create(FoodApi.class);
         if (foodApi != null) {
             foodApi.getAllMealsByCategory(category).subscribeOn(Schedulers.io())

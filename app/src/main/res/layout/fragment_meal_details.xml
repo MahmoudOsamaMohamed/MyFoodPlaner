@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="12"
+    android:weightSum="17"
     android:orientation="vertical"
     android:padding="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,11 +13,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="11">
+        android:layout_weight="16">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
 
             <ImageView
@@ -55,9 +56,19 @@
                     android:gravity="center_vertical"
                     android:textSize="20sp"
                     android:fontFamily="sans-serif-black"/>
-
+<ImageView
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:scaleType="fitXY"
+    android:id="@+id/category_img"
+    />
                 <TextView
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/meal_category"
@@ -66,7 +77,7 @@
                     android:textSize="20sp"
                     android:text="Beef"
                     android:gravity="center"
-                    android:layout_marginStart="16dp"/>
+                   />
             </LinearLayout>
 
             <LinearLayout
@@ -80,23 +91,36 @@
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="@string/area_name"
+                    android:text="Country"
                     android:textColor="@color/primary"
                     android:gravity="center_vertical"
                     android:textSize="20sp"
                     android:fontFamily="sans-serif-black"/>
-
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="8dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginBottom="8dp"
+                    android:id="@+id/country_img"
+                    android:scaleType="fitXY"
+                    />
                 <TextView
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:id="@+id/meal_area"
                     android:fontFamily="sans-serif-light"
                     android:textColor="@color/primary"
                     android:textSize="20sp"
+
                     android:text="Beef"
                     android:gravity="center"
-                    android:layout_marginStart="16dp"/>
+                    />
             </LinearLayout>
 
             <TextView
@@ -118,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:text="@string/ingredients"
+                android:gravity="center"
                 android:textColor="@color/primary"
                 android:textSize="20sp"
                 android:fontFamily="sans-serif-black"
@@ -137,11 +162,13 @@
                 android:textSize="20sp"
                 android:fontFamily="sans-serif-black"
                 android:id="@+id/steps_tv"
+                android:gravity="center"
                 android:layout_marginBottom="16dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+
                 android:id="@+id/steps_recycler_view"
                 android:layout_marginBottom="16dp"/>
         </LinearLayout>
@@ -150,24 +177,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_marginTop="16dp"
-        android:weightSum="2"
+        android:layout_weight="1"
+        android:gravity="bottom"
         android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/add_to_favorite"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginEnd="16dp"
-            android:text="@string/favourte" />
 
-        <Button
+            android:src="@drawable/favorite"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:contentDescription="@string/favourte"
+            android:layout_marginEnd="8dp" />
+
+        <ImageButton
             android:id="@+id/add_to_plan"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/add_to_plan" />
+            android:src="@drawable/add_to_plan"
+            android:background="?attr/selectableItemBackground"
+            android:padding="8dp"
+            android:contentDescription="@string/add_to_plan" />
     </LinearLayout>
+
 </LinearLayout>

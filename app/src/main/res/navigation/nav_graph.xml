@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_homeFragment_self"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_exploreFragment"
+            app:destination="@id/exploreFragment" />
     </fragment>
     <fragment
         android:id="@+id/mealDetailsFragment"
@@ -68,6 +71,16 @@
         <action
             android:id="@+id/action_exploreFragment_to_mealDetailsFragment"
             app:destination="@id/mealDetailsFragment" />
+        <argument
+            android:name="item"
+            app:argType="com.mahmoud.myfoodplaner.homerefactor.Serizable"
+
+
+             />
+        <action
+            android:id="@+id/action_exploreFragment_self"
+            app:destination="@id/exploreFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/favourateFragment"

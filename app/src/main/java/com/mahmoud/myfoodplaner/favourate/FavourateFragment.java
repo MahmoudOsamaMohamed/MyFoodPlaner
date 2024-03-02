@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.mahmoud.myfoodplaner.R;
 import com.mahmoud.myfoodplaner.dbmodels.favourate.Favourate;
 import com.mahmoud.myfoodplaner.home.MealClickListener;
@@ -31,7 +32,7 @@ import java.util.List;
 public class FavourateFragment extends Fragment implements FavourateView,DeleteFavourateListener, MealClickListener {
 FavouratePresenter presenter;
 RecyclerView rc;
-TextView show;
+LottieAnimationView show;
     List<ShortMeal> shortMeals;
 
 
@@ -57,7 +58,7 @@ TextView show;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rc = view.findViewById(R.id.rc);
-        show=view.findViewById(R.id.show);
+        show=view.findViewById(R.id.empty);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         rc.setLayoutManager(layoutManager);
         presenter.getAllFavourate();

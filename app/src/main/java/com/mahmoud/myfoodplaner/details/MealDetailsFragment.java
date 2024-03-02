@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,7 +30,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
+import com.mahmoud.myfoodplaner.MainActivity;
 import com.mahmoud.myfoodplaner.R;
+import com.mahmoud.myfoodplaner.dbmodels.CashingLocalDataSource;
+import com.mahmoud.myfoodplaner.dbmodels.Category;
 import com.mahmoud.myfoodplaner.dbmodels.favourate.Favourate;
 import com.mahmoud.myfoodplaner.dbmodels.favourate.FavourateLocalDataSource;
 import com.mahmoud.myfoodplaner.dbmodels.table.TableLocalDataSource;
@@ -56,7 +60,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MealDetailsFragment extends Fragment implements DetailsView, DaySelectionDialogFragment.DaySelectionListener {
     YouTubePlayerView youtube_player_view;
-    Button favorite_btn, add_to_plan_btn;
+    ImageButton favorite_btn, add_to_plan_btn;
+    ImageView categoryImg;
+    ImageView countryImg;
 
     ImageView meal_image;
     TextView meal_name, meal_category, meal_area, meal_description;
@@ -93,6 +99,8 @@ public class MealDetailsFragment extends Fragment implements DetailsView, DaySel
         meal_name = view.findViewById(R.id.meal_name);
         meal_category = view.findViewById(R.id.meal_category);
         meal_area = view.findViewById(R.id.meal_area);
+        categoryImg=view.findViewById(R.id.category_img);
+        countryImg=view.findViewById(R.id.country_img);
         meal_description = view.findViewById(R.id.meal_description);
         stepsRecyclerView = view.findViewById(R.id.steps_recycler_view);
         stepsTv = view.findViewById(R.id.steps_tv);
@@ -216,7 +224,37 @@ Snackbar.make(view, "Error " + t.getMessage(), Snackbar.LENGTH_LONG).show();
             meal_category.setText(longMeal.getStrCategory());
         if (longMeal.getStrArea() != null)
             meal_area.setText(longMeal.getStrArea());
+        Glide.with(getContext()).load("https://flagcdn.com/40x30/"+ MainActivity.countryCodes.get(longMeal.getStrArea()).toLowerCase()+".png").into(countryImg);
+        CashingLocalDataSource.getInstance(getActivity()).getAllCategories()
+                .take(1).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe(
+                        new FlowableSubscriber<List<Category>>() {
+                            @Override
+                            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Subscription s) {
+                                s.request(1);
+                            }
 
+                            @Override
+                            public void onNext(List<Category> categories) {
+                                    for (Category category : categories) {
+                                        if (longMeal.getStrCategory().equals(category.name)) {
+                                            Glide.with(getContext()).load(category.img_url).into(categoryImg);
+                                            break;
+                                        }
+                                    }
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        }
+                );
         if (longMeal.getStrMealThumb() != null)
             Glide.with(getContext()).load(longMeal.getStrMealThumb()).into(meal_image);
         if (longMeal.getStrInstructions().contains("\n")) {

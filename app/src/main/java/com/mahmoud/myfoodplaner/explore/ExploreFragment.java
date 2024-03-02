@@ -25,16 +25,22 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 
+import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.mahmoud.myfoodplaner.R;
 import com.mahmoud.myfoodplaner.dbmodels.Area;
 import com.mahmoud.myfoodplaner.dbmodels.CashingLocalDataSource;
 import com.mahmoud.myfoodplaner.dbmodels.Category;
 import com.mahmoud.myfoodplaner.dbmodels.Ingerdiant;
+import com.mahmoud.myfoodplaner.home.HomeFragment;
+import com.mahmoud.myfoodplaner.homerefactor.ItemListner;
+import com.mahmoud.myfoodplaner.homerefactor.Serizable;
 import com.mahmoud.myfoodplaner.model.MealsRemoteDataSourceImpl;
 import com.mahmoud.myfoodplaner.model.callbacks.ShortMealsCallback;
 import com.mahmoud.myfoodplaner.model.pojos.ShortMeal;
@@ -58,7 +64,10 @@ public class ExploreFragment extends Fragment implements ShortMealsCallback,Clic
     boolean isArea = false;
     boolean isCategory = false;
     boolean isIng = false;
-
+    LinearLayout search;
+    LinearLayout noInterent;
+    ImageButton refresh;
+    LottieAnimationView animationViewSearching;
 
     public ExploreFragment() {
         // Required empty public constructor
@@ -85,43 +94,91 @@ public class ExploreFragment extends Fragment implements ShortMealsCallback,Clic
         autoCompleteTextView = view.findViewById(R.id.search_bar);
         recyclerView = view.findViewById(R.id.recyclerView2);
         mealModelList = new ArrayList<>();
-
-
-        CashingLocalDataSource.getInstance(getActivity()).getAllCategories().take(1).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new FlowableSubscriber<List<Category>>() {
-
-                    @Override
-                    public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Subscription s) {
-                        s.request(1);
-                    }
-
-                    @Override
-                    public void onNext(List<Category> categories) {
-                 for(Category category : categories){
-                     MealsRemoteDataSourceImpl.getInstance().getAllMealsByCategory(category.name, ExploreFragment.this);
-                 }
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-        bottomsheet.setOnClickListener(new View.OnClickListener() {
+        animationViewSearching = view.findViewById(R.id.search_anim);
+        search = view.findViewById(R.id.linearLayout);
+        noInterent = view.findViewById(R.id.noInternet);
+        refresh = view.findViewById(R.id.refreshButton);
+        refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                showDialog();
-
+                NavHostFragment.findNavController(ExploreFragment.this)
+                        .navigate(R.id.action_exploreFragment_self);
             }
         });
+        if (!HomeFragment.isInternetAvailable(getActivity())) {
+            search.setVisibility(View.GONE);
+            noInterent.setVisibility(View.VISIBLE);
+            animationViewSearching.setVisibility(View.GONE);
+        } else {
+            Serizable serizable = null;
+            try {
+                serizable = ExploreFragmentArgs.fromBundle(getArguments()).getItem();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            if (serizable != null) {
+                animationViewSearching.setVisibility(View.GONE);
+                //Snackbar.make(getView(), serizable.getName()+" from explore  "+serizable.getType(), Snackbar.LENGTH_LONG).show();
+                switch (serizable.getType()) {
+                    case ItemListner.AREA:
+                        isArea = true;
+                        MealsRemoteDataSourceImpl.getInstance().getAllMealsByArea(serizable.getName(), this);
+                        recyclerView.requestFocus();
+
+                        break;
+                    case ItemListner.CATEGORY:
+                        isCategory = true;
+                        MealsRemoteDataSourceImpl.getInstance().getAllMealsByCategory(serizable.getName(), this);
+                        recyclerView.requestFocus();
 
 
+                        break;
+                    case ItemListner.INGREDIANT:
+                        isIng = true;
+                        MealsRemoteDataSourceImpl.getInstance().getAllMealsByIngredient(serizable.getName(), this);
+                        recyclerView.requestFocus();
+                        break;
+                }
+            }
+            else {
+
+                CashingLocalDataSource.getInstance(getActivity()).getAllCategories().take(1).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread()).subscribe(new FlowableSubscriber<List<Category>>() {
+
+                            @Override
+                            public void onSubscribe(@io.reactivex.rxjava3.annotations.NonNull Subscription s) {
+                                s.request(1);
+                            }
+
+                            @Override
+                            public void onNext(List<Category> categories) {
+                                for (Category category : categories) {
+                                    MealsRemoteDataSourceImpl.getInstance().getAllMealsByCategory(category.name, ExploreFragment.this);
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable t) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+                        });
+            }
+            bottomsheet.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    showDialog();
+
+                }
+            });
+
+
+        }
     }
     private void showDialog() {
 
@@ -324,6 +381,7 @@ for (Ingerdiant ingerdiant:ingerdiants){
 
     @Override
     public void onAreaClick(String name) {
+        animationViewSearching.setVisibility(View.GONE);
         isArea=true;
         MealsRemoteDataSourceImpl.getInstance().getAllMealsByArea(name,this);
         recyclerView.requestFocus();
@@ -336,6 +394,7 @@ for (Ingerdiant ingerdiant:ingerdiants){
 
     @Override
     public void onCategoryClick(String name) {
+        animationViewSearching.setVisibility(View.GONE);
 isCategory=true;
         MealsRemoteDataSourceImpl.getInstance().getAllMealsByCategory(name,this);
         recyclerView.requestFocus();
@@ -347,6 +406,7 @@ isCategory=true;
 
     @Override
     public void onIngClick(String name) {
+        animationViewSearching.setVisibility(View.GONE);
         isIng=true;
         MealsRemoteDataSourceImpl.getInstance().getAllMealsByIngredient(name,this);
         recyclerView.requestFocus();
